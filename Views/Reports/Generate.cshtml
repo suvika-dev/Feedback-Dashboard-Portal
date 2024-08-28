@@ -1,0 +1,33 @@
+﻿@model FDP.Models.ReportGenerationViewModel
+
+@{
+    ViewBag.Title = "Generate Report";
+}
+
+<h2>Generate Report</h2>
+
+@using (Html.BeginForm("Generate", "Reports", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.LabelFor(m => m.ReportType)
+    @Html.RadioButtonFor(m => m.ReportType, "Summary") Summary
+    @Html.RadioButtonFor(m => m.ReportType, "Detailed") Detailed
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(m => m.DepartmentID, "Department")
+    @Html.DropDownListFor(m => m.DepartmentID, new SelectList(ViewBag.Departments, "DepartmentId", "DepartmentName"), "Select Department", new { @class = "form-control" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(m => m.StartDate, "Start Date")
+    @Html.TextBoxFor(m => m.StartDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(m => m.EndDate, "End Date")
+    @Html.TextBoxFor(m => m.EndDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+</div>
+
+<button type="submit" class="btn btn-primary">Generate Report</button>
+}

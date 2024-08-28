@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+}
+
+<h2>Dashboard</h2>
+
+<div class="nav-menu">
+    <ul>
+        <li><a href="@Url.Action("Index", "Feedback")">Feedback</a></li>
+        <li><a href="@Url.Action("Index", "Reports")">Reports</a></li>
+        <li><a href="@Url.Action("Index", "UserManagement")">User Management</a></li>
+    </ul>
+</div>
+
+<div class="dashboard-summary">
+    <p>Average Test Score: 85%</p>
+    <p>Number of Assessments: 120</p>
+</div>
+
+<div class="performance-chart">
+    <h3>Performance Over Time</h3>
+    <!-- Insert graph/chart here -->
+</div>
+
+<div class="filters">
+    <label>Department:</label>
+    @Html.DropDownList("Department", new SelectList(ViewBag.Departments, "DepartmentId", "DepartmentName"), "All", new { @class = "form-control" })
+    <label>Date Range:</label>
+    @Html.TextBox("DateRange", null, new { @class = "form-control", placeholder = "Jan - June 2024" })
+</div>

@@ -1,0 +1,117 @@
+﻿@model FDP.Models.FeedbackFormViewModel
+
+<form asp-action="Create" method="post">
+    @* <div class="form-group">
+        <label asp-for="EmployeeName" class="control-label">Employee Name</label>
+        <input asp-for="EmployeeName" class="form-control" />
+        <span asp-validation-for="EmployeeName" class="text-danger"></span>
+    </div> *@
+    <div class="form-group">
+        <label asp-for="UserID" class="control-label">Employee Name</label>
+        <select asp-for="UserID" class="form-control" asp-items="Model.Users">
+            <option value="">-- Select Employee --</option>
+        </select>
+        <span asp-validation-for="UserID" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="EvalTypeID" class="control-label">Evaluation Type</label>
+        <select asp-for="EvalTypeID" class="form-control" asp-items="Model.EvalTypes">
+            <option value="">-- Select Evaluation Type --</option>
+        </select>
+        <span asp-validation-for="EvalTypeID" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Score" class="control-label">Score</label>
+        <input asp-for="Score" class="form-control" />
+        <span asp-validation-for="Score" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Comments" class="control-label">Comments</label>
+        <textarea asp-for="Comments" class="form-control"></textarea>
+        <span asp-validation-for="Comments" class="text-danger"></span>
+    </div>
+
+    <!-- Dynamic fields based on EvalTypeID -->
+    <div id="dynamic-fields">
+        <!-- Fields for Tests -->
+        <div id="test-fields" style="display: none;">
+            <div class="form-group">
+                <label asp-for="TestType">Test Type</label>
+                <input asp-for="TestType" class="form-control" />
+                <span asp-validation-for="TestType" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!-- Fields for Assessments -->
+        <div id="assessment-fields" style="display: none;">
+            <div class="form-group">
+                <label asp-for="CompetencyAreas">Competency Areas</label>
+                <input asp-for="CompetencyAreas" class="form-control" />
+                <span asp-validation-for="CompetencyAreas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EvaluatorComments">Evaluator Comments</label>
+                <textarea asp-for="EvaluatorComments" class="form-control"></textarea>
+                <span asp-validation-for="EvaluatorComments" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!-- Fields for Interviews -->
+        <div id="interview-fields" style="display: none;">
+            <div class="form-group">
+                <label asp-for="InterviewerFeedback">Interviewer Feedback</label>
+                <textarea asp-for="InterviewerFeedback" class="form-control"></textarea>
+                <span asp-validation-for="InterviewerFeedback" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CandidateStrengths">Candidate Strengths</label>
+                <textarea asp-for="CandidateStrengths" class="form-control"></textarea>
+                <span asp-validation-for="CandidateStrengths" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!-- Fields for Project Progress -->
+        <div id="project-progress-fields" style="display: none;">
+            <div class="form-group">
+                <label asp-for="Milestones">Milestones</label>
+                <textarea asp-for="Milestones" class="form-control"></textarea>
+                <span asp-validation-for="Milestones" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompletionPercentage">Completion Percentage</label>
+                <input asp-for="CompletionPercentage" class="form-control" type="number" />
+                <span asp-validation-for="CompletionPercentage" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#EvalTypeID').change(function () {
+                var evalType = $(this).val();
+                $('#dynamic-fields > div').hide();
+                if (evalType == "1") {
+                    $('#test-fields').show();
+                } else if (evalType == "2") {
+                    $('#assessment-fields').show();
+                } else if (evalType == "3") {
+                    $('#interview-fields').show();
+                } else if (evalType == "4") {
+                    $('#project-progress-fields').show();
+                }
+            });
+        });
+    </script>
+
+    @* Add your validation scripts *@
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,13 +1,30 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using FDP.Models;
-namespace FDP.Controllers
+﻿using FDP.Models;
+using Microsoft.AspNetCore.Mvc;
+
+public class AccountController : Controller
 {
-    public class AccountController: Controller
+    [HttpGet]
+    public ActionResult Login()
     {
-        public IActionResult Login()
+        return View();
+    }
+    [HttpPost]
+    public IActionResult Login(LoginViewModel model)
+    {
+        if (ModelState.IsValid)
         {
-            return View();
+            // Perform login logic here
         }
+
+        return View(model);
+    }
+
+
+
+
+    public ActionResult ForgotPassword()
+    {
+        // Implement forgot password logic here
+        return View();
     }
 }

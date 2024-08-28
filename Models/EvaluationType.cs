@@ -1,8 +1,11 @@
-﻿namespace FDP.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FDP.Models
 {
     public class EvaluationType
     {
-        public int EvalTypeID { get; set; }
+        [Key]
+        public int EvalTypeID { get; set; } // Primary Key
         public string EvalName { get; set; }
         public string Description { get; set; }
     }
