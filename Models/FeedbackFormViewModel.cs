@@ -7,6 +7,8 @@ namespace FDP.Models
     public class FeedbackFormViewModel
     {
         [Required]
+        public int FeedbackID { get; set; }
+        [Required]
         public int UserID { get; set; }
 
         public IEnumerable<SelectListItem> Users { get; set; }

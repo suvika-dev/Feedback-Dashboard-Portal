@@ -1,0 +1,57 @@
+﻿@model IEnumerable<FDP.Models.FeedbackListViewModel>
+
+@{
+    ViewBag.Title = "Feedback List";
+}
+
+<h2>Feedback List</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+             <th>Feedback ID</th> 
+            <th>Username</th>
+            <th>Evaluation Type</th>
+            <th>Score</th>
+            <th>Date</th>
+            <th>Interviewer Feedback</th>
+            <th>Candidate Strengths</th>
+            <th>Milestones</th>
+            <th>Completion Percentage</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var feedback in Model)
+        {
+            <tr>
+                <td>@feedback.FeedbackID</td> 
+                <td>
+                    @if (User.IsInRole("Admin") || User.IsInRole("HR Manager"))
+                    {
+                        <a href="@Url.Action("Edit", "Feedback", new { id = feedback.FeedbackID })">
+                            @feedback.Username
+                        </a>
+                    }
+                    else
+                    {
+                        @feedback.Username
+                    }
+                </td>
+                <td>@feedback.EvalType</td>
+                <td>@feedback.Score</td>
+                <td>@feedback.Date.ToString("yyyy-MM-dd")</td>
+                <td>@feedback.InterviewerFeedback</td>
+                <td>@feedback.CandidateStrengths</td>
+                <td>@feedback.Milestones</td>
+                <td>@feedback.CompletionPercentage.HasValue ? feedback.CompletionPercentage.Value.ToString() : "N/A"</td>
+                <td>
+                    @if (User.IsInRole("Admin") || User.IsInRole("HR Manager"))
+                    {
+                        <a href="@Url.Action("Edit", "Feedback", new { id = feedback.FeedbackID })" class="btn btn-primary">Edit</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

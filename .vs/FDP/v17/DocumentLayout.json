@@ -11,16 +11,20 @@
       "RelativeMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|solutionrelative:models\\feedbackformviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|c:\\users\\user\\source\\repos\\fdp\\fdp\\views\\feedback\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|solutionrelative:views\\feedback\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|c:\\users\\user\\source\\repos\\fdp\\fdp\\models\\feedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|solutionrelative:models\\feedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|c:\\users\\user\\source\\repos\\fdp\\fdp\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|c:\\users\\user\\source\\repos\\fdp\\fdp\\models\\feedbacklistviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|solutionrelative:models\\feedbacklistviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|c:\\users\\user\\source\\repos\\fdp\\fdp\\models\\requiredifevaluationattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|solutionrelative:models\\requiredifevaluationattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|c:\\users\\user\\source\\repos\\fdp\\fdp\\views\\feedback\\feedbacklist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|solutionrelative:views\\feedback\\feedbacklist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|c:\\users\\user\\source\\repos\\fdp\\fdp\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,32 +34,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Data\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Data\\ApplicationDbContext.cs",
-              "RelativeToolTip": "Data\\ApplicationDbContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAnAAAA",
+              "DocumentIndex": 1,
+              "Title": "FeedbackFormViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Models\\FeedbackFormViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\FeedbackFormViewModel.cs",
+              "ToolTip": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Models\\FeedbackFormViewModel.cs*",
+              "RelativeToolTip": "Models\\FeedbackFormViewModel.cs*",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-27T14:06:34.321Z",
+              "WhenOpened": "2024-08-29T06:48:15.746Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Feedback.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Models\\Feedback.cs",
+              "RelativeDocumentMoniker": "Models\\Feedback.cs",
+              "ToolTip": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Models\\Feedback.cs",
+              "RelativeToolTip": "Models\\Feedback.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-29T06:47:37.083Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "RequiredIfEvaluationAttribute.cs",
-              "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Models\\RequiredIfEvaluationAttribute.cs",
-              "RelativeDocumentMoniker": "Models\\RequiredIfEvaluationAttribute.cs",
-              "ToolTip": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Models\\RequiredIfEvaluationAttribute.cs",
-              "RelativeToolTip": "Models\\RequiredIfEvaluationAttribute.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACIAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-27T13:18:25.647Z",
+              "Title": "FeedbackList.cshtml",
+              "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Views\\Feedback\\FeedbackList.cshtml",
+              "RelativeDocumentMoniker": "Views\\Feedback\\FeedbackList.cshtml",
+              "ToolTip": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Views\\Feedback\\FeedbackList.cshtml*",
+              "RelativeToolTip": "Views\\Feedback\\FeedbackList.cshtml*",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAwwBsAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-29T05:36:49.885Z",
               "EditorCaption": ""
             },
             {
@@ -64,37 +81,37 @@
               "Title": "FeedbackController.cs",
               "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Controllers\\FeedbackController.cs",
               "RelativeDocumentMoniker": "Controllers\\FeedbackController.cs",
-              "ToolTip": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Controllers\\FeedbackController.cs",
-              "RelativeToolTip": "Controllers\\FeedbackController.cs",
-              "ViewState": "AQIAAFYAAAAAAAAAAAAwwH0AAAAMAAAA",
+              "ToolTip": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Controllers\\FeedbackController.cs*",
+              "RelativeToolTip": "Controllers\\FeedbackController.cs*",
+              "ViewState": "AQIAAMYAAAAAAAAAAAAlwNgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-27T03:46:31.268Z",
+              "WhenOpened": "2024-08-29T05:09:50.089Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FeedbackFormViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Models\\FeedbackFormViewModel.cs",
-              "RelativeDocumentMoniker": "Models\\FeedbackFormViewModel.cs",
-              "ToolTip": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Models\\FeedbackFormViewModel.cs",
-              "RelativeToolTip": "Models\\FeedbackFormViewModel.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAuwBYAAABKAAAA",
+              "DocumentIndex": 5,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Controllers\\AccountController.cs",
+              "ViewState": "AQIAACAAAAAAAAAAAIA4wCEAAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-27T03:38:26.384Z",
+              "WhenOpened": "2024-08-29T04:43:08.256Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Views\\Feedback\\Create.cshtml",
-              "RelativeDocumentMoniker": "Views\\Feedback\\Create.cshtml",
-              "ToolTip": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Views\\Feedback\\Create.cshtml",
-              "RelativeToolTip": "Views\\Feedback\\Create.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAKAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-27T03:36:44.129Z",
+              "DocumentIndex": 3,
+              "Title": "FeedbackListViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Models\\FeedbackListViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\FeedbackListViewModel.cs",
+              "ToolTip": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Models\\FeedbackListViewModel.cs",
+              "RelativeToolTip": "Models\\FeedbackListViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-29T04:35:10.108Z",
               "EditorCaption": ""
             }
           ]

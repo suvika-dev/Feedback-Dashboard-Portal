@@ -8,7 +8,12 @@ namespace FDP.Controllers
 {
     public class DashboardController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly ApplicationDbContext _context;
+
+        public DashboardController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
 
         // GET: Dashboard/Index
         public ActionResult Index()

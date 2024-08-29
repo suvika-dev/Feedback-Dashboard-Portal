@@ -2,6 +2,7 @@
 using FDP.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace FDP.Controllers
@@ -128,6 +129,111 @@ namespace FDP.Controllers
 
             return RedirectToAction("Index");
         }
+        public async Task<IActionResult> FeedbackList()
+        {
+            var feedbacks = await _context.Feedback
+                .Include(f => f.User)
+                .Include(f => f.EvaluationType)
+                .Select(f => new FeedbackListViewModel
+                {
+                    FeedbackID = f.FeedbackID,
+                    Username = f.User.Username,
+                    UserID = f.UserID,
+                    RoleID = f.User.UserRoles.Select(ur => ur.RoleID).FirstOrDefault(),
+                    EvalType = f.EvaluationType.ToString(),
+                    Score = f.Score,
+                    Date = f.Date,
+                    InterviewerFeedback = f.InterviewerFeedback,
+                    CandidateStrengths = f.CandidateStrengths,
+                    Milestones = f.Milestones,
+                    CompletionPercentage = f.CompletionPercentage
+                })
+                .ToListAsync();
+
+            return View(feedbacks);
+        }
+        public async Task<IActionResult> Edit(int id)
+        {
+            var feedback = await _context.Feedback
+                .Include(f => f.User)
+                .Include(f => f.EvaluationType)
+                .FirstOrDefaultAsync(f => f.FeedbackID == id);
+
+            if (feedback == null)
+            {
+                return NotFound();
+            }
+
+            var model = new FeedbackFormViewModel
+            {
+                UserID = feedback.UserID,
+                EvalTypeID = feedback.EvalTypeID,
+                Score = feedback.Score,
+                Comments = feedback.Comments,
+                InterviewerFeedback = feedback.InterviewerFeedback,
+                CandidateStrengths = feedback.CandidateStrengths,
+                Milestones = feedback.Milestones,
+                CompletionPercentage = feedback.CompletionPercentage,
+                Date = feedback.Date,
+                Users = _context.Users.Select(u => new SelectListItem
+                {
+                    Value = u.UserID.ToString(),
+                    Text = u.Username
+                }).ToList(),
+                EvalTypes = _context.EvaluationType.Select(et => new SelectListItem
+                {
+                    Value = et.EvalTypeID.ToString(),
+                    Text = et.ToString()  // Ensure you have a proper ToString() override or use a different property
+                }).ToList()
+            };
+
+            return View(model);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(FeedbackFormViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var feedback = await _context.Feedback.FindAsync(model.FeedbackID);
+
+                if (feedback == null)
+                {
+                    return NotFound();
+                }
+
+                feedback.UserID = model.UserID;
+                feedback.EvalTypeID = model.EvalTypeID;
+                feedback.Score = model.Score;
+                feedback.Comments = model.Comments;
+                feedback.InterviewerFeedback = model.InterviewerFeedback;
+                feedback.CandidateStrengths = model.CandidateStrengths;
+                feedback.Milestones = model.Milestones;
+                feedback.CompletionPercentage = (int)model.CompletionPercentage;
+                feedback.Date = model.Date;
+
+                _context.Update(feedback);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("FeedbackList");
+            }
+
+            // Re-populate the dropdown lists in case of a validation error
+            model.Users = _context.Users.Select(u => new SelectListItem
+            {
+                Value = u.UserID.ToString(),
+                Text = u.Username
+            }).ToList();
+            model.EvalTypes = _context.EvaluationType.Select(et => new SelectListItem
+            {
+                Value = et.EvalTypeID.ToString(),
+                Text = et.ToString()  // Ensure you have a proper ToString() override or use a different property
+            }).ToList();
+
+            return View(model);
+        }
+
+
 
 
 

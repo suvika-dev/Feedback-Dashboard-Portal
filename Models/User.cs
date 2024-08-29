@@ -1,4 +1,5 @@
-﻿namespace FDP.Models
+﻿using Microsoft.AspNetCore.Identity;
+namespace FDP.Models
 {
     public class User
     {
@@ -8,5 +9,7 @@
         public required string Email { get; set; }
         public DateTime CreatedDate { get; set; }
         public bool IsActive { get; set; }
+
+        public ICollection<UserRole> UserRoles { get; set; }
     }
 }
