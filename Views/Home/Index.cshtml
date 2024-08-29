@@ -2,4 +2,13 @@
 
 <h1>Welcome to the Feedback Dashboard Portal</h1>
 <p>Streamline your feedback management and reporting.</p>
-<a href="/Account/Login" class="btn btn-primary">Login to Get Started</a>
+ <a href="/Account/Login" class="btn btn-primary">Login to Get Started</a> 
+@* @if (User.Identity.IsAuthenticated)
+{
+    <a href="@Url.Action("Index", "Dashboard")" class="btn btn-primary">Go to Dashboard</a>
+}
+else
+{
+    <a href="/Account/Login" class="btn btn-primary">Login to Get Started</a>
+}
+ *@

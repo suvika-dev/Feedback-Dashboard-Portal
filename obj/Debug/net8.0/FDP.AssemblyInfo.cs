@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FDP")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+16d1009f411c269aef053e5d1fb5b4b1385754b6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f64edb646c884b3b9292cef523d10e1791641d8d")]
 [assembly: System.Reflection.AssemblyProductAttribute("FDP")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FDP")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

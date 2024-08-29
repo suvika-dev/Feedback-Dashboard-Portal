@@ -112,16 +112,16 @@ namespace FDP.Controllers
             {
                 UserID = model.UserID,
                 EvalTypeID = model.EvalTypeID,
-                Score = model.Score,
-                Comments = model.Comments,
-                TestType = model.TestType,
-                CompetencyAreas = model.CompetencyAreas,
-                EvaluatorComments = model.EvaluatorComments,
-                InterviewerFeedback = model.InterviewerFeedback,
-                CandidateStrengths = model.CandidateStrengths,
-                Milestones = model.Milestones,
-                CompletionPercentage = (int)model.CompletionPercentage,
-                Date = model.Date
+                Score = model.Score, // Provide a default value if Score is null
+                Comments = model.Comments ?? string.Empty, // Provide a default value if Comments is null
+                TestType = model.TestType ?? string.Empty,
+                CompetencyAreas = model.CompetencyAreas ?? string.Empty,
+                EvaluatorComments = model.EvaluatorComments ?? string.Empty,
+                InterviewerFeedback = model.InterviewerFeedback ?? string.Empty,
+                CandidateStrengths = model.CandidateStrengths ?? string.Empty,
+                Milestones = model.Milestones ?? string.Empty,
+                CompletionPercentage = model.CompletionPercentage.HasValue ? (int)model.CompletionPercentage.Value : 0, // Ensure CompletionPercentage has a value
+                Date = model.Date  // Provide a default value if Date is null
             };
 
             _context.Feedback.Add(feedback);

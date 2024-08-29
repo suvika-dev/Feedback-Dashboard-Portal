@@ -9,7 +9,15 @@
 </head>
 <body>
     <header>
+
+
+        @if ((ViewContext.RouteData.Values["controller"].ToString() != "Home" ||
+        ViewContext.RouteData.Values["action"].ToString() != "Index") &&
+        (ViewContext.RouteData.Values["controller"].ToString() != "Account" ||
+        ViewContext.RouteData.Values["action"].ToString() != "Login"))
+        {
         @Html.Partial("_NavBar")
+        }
     </header>
     <div class="container">
         @RenderBody()
