@@ -1,23 +1,32 @@
 ﻿using FDP.Data;
 using FDP.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Security.Claims;
+using Newtonsoft.Json;
 
 namespace FDP.Controllers
 {
     public class FeedbackController : Controller
-    {
-        private readonly ApplicationDbContext _context;
 
-        public FeedbackController(ApplicationDbContext context)
+    {
+
+       // private readonly UserManager<ApplicationUser> _userManager;
+        private readonly ApplicationDbContext _context;
+        //UserManager<ApplicationUser> userManager,
+
+        public FeedbackController( ApplicationDbContext context)
         {
+           // _userManager = userManager;
             _context = context;
         }
 
         public IActionResult Create()
         {
+           
             var model = new FeedbackFormViewModel
             {
                 Users = _context.Users.Select(u => new SelectListItem
@@ -32,12 +41,14 @@ namespace FDP.Controllers
                 }).ToList()
             };
 
+
             return View(model);
         }
 
         [HttpPost]
-        public IActionResult Create(FeedbackFormViewModel model)
+        public async Task<IActionResult> Create(FeedbackFormViewModel model)
         {
+           
             // Adjust ModelState based on EvalTypeID
             switch (model.EvalTypeID)
             {
@@ -107,27 +118,42 @@ namespace FDP.Controllers
                 ModelState.AddModelError("", "Duplicate entry found. Please revise your input.");
                 return View(model);
             }
-
-            var feedback = new Feedback
+           
+            // Retrieve the UserID claim
+            var userIdClaim =  User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
             {
-                UserID = model.UserID,
-                EvalTypeID = model.EvalTypeID,
-                Score = model.Score, // Provide a default value if Score is null
-                Comments = model.Comments ?? string.Empty, // Provide a default value if Comments is null
-                TestType = model.TestType ?? string.Empty,
-                CompetencyAreas = model.CompetencyAreas ?? string.Empty,
-                EvaluatorComments = model.EvaluatorComments ?? string.Empty,
-                InterviewerFeedback = model.InterviewerFeedback ?? string.Empty,
-                CandidateStrengths = model.CandidateStrengths ?? string.Empty,
-                Milestones = model.Milestones ?? string.Empty,
-                CompletionPercentage = model.CompletionPercentage.HasValue ? (int)model.CompletionPercentage.Value : 0, // Ensure CompletionPercentage has a value
-                Date = model.Date  // Provide a default value if Date is null
-            };
+                return BadRequest("User ID claim is missing or invalid.");
+            }
+            try
+            {
+                var feedback = new Feedback
+                {
+                    UserID = model?.UserID ?? default(int),
+                    EvalTypeID = model?.EvalTypeID ?? default(int),
+                    Score = model?.Score ?? default(int),
+                    InterviewerFeedback = model?.InterviewerFeedback?.ToString() ?? "N/A",
+                    CandidateStrengths = model?.CandidateStrengths?.ToString() ?? "N/A",
+                    Milestones = model?.Milestones?.ToString() ?? "N/A",
+                    CompletionPercentage = model?.CompletionPercentage ?? 0,
+                    Date = DateTime.Now,
+                    EnteredByUserID = int.Parse(userIdClaim)
+                };
+                _context.Feedback.Add(feedback);
+                // _context.SaveChanges();
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                // Log the exception details
+                Console.WriteLine($"Error initializing Feedback: {ex.Message}");
+                Console.WriteLine(ex.StackTrace); // Optionally log the stack trace
+            }
 
-            _context.Feedback.Add(feedback);
-            _context.SaveChanges();
 
-            return RedirectToAction("Index");
+           
+
+            return RedirectToAction("FeedbackList");
         }
         public async Task<IActionResult> FeedbackList()
         {
@@ -140,7 +166,7 @@ namespace FDP.Controllers
                     Username = f.User.Username,
                     UserID = f.UserID,
                     RoleID = f.User.UserRoles.Select(ur => ur.RoleID).FirstOrDefault(),
-                    EvalType = f.EvaluationType.ToString(),
+                    EvalType = f.EvaluationType.EvalName.ToString(),
                     Score = f.Score,
                     Date = f.Date,
                     InterviewerFeedback = f.InterviewerFeedback,

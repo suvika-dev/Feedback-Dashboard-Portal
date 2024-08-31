@@ -1,14 +1,10 @@
 ﻿@model FDP.Models.FeedbackFormViewModel
 
 <form asp-action="Create" method="post">
-    @* <div class="form-group">
-        <label asp-for="EmployeeName" class="control-label">Employee Name</label>
-        <input asp-for="EmployeeName" class="form-control" />
-        <span asp-validation-for="EmployeeName" class="text-danger"></span>
-    </div> *@
+
     <div class="form-group">
         <label asp-for="UserID" class="control-label">Employee Name</label>
-        <select asp-for="UserID" class="form-control" asp-items="Model.Users">
+        <select asp-for="UserID" class="form-control" asp-items="Model.Users" id="UserID" onchange="updateEmployeeName()">
             <option value="">-- Select Employee --</option>
         </select>
         <span asp-validation-for="UserID" class="text-danger"></span>
@@ -16,12 +12,15 @@
 
     <div class="form-group">
         <label asp-for="EvalTypeID" class="control-label">Evaluation Type</label>
-        <select asp-for="EvalTypeID" class="form-control" asp-items="Model.EvalTypes">
+        <select asp-for="EvalTypeID" class="form-control" asp-items="Model.EvalTypes" id="EvalTypeID" onchange="updateEvalTypeName()">
             <option value="">-- Select Evaluation Type --</option>
         </select>
         <span asp-validation-for="EvalTypeID" class="text-danger"></span>
     </div>
 
+    <!-- Hidden fields to store selected texts -->
+    <input type="hidden" id="EmployeeName" name="EmployeeName" value="@Model.EmployeeName" />
+    <input type="hidden" id="EvalTypeName" name="EvalTypeName" value="@Model.EvalTypeName" />
     <div class="form-group">
         <label asp-for="Score" class="control-label">Score</label>
         <input asp-for="Score" class="form-control" />
@@ -94,6 +93,7 @@
 </form>
 
 @section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
             $('#EvalTypeID').change(function () {
@@ -109,6 +109,21 @@
                     $('#project-progress-fields').show();
                 }
             });
+        });
+        function updateEmployeeName() {
+            var selectedOption = $('#UserID option:selected');
+            $('#EmployeeName').val(selectedOption.text());
+        }
+
+        function updateEvalTypeName() {
+            var selectedOption = $('#EvalTypeID option:selected');
+            $('#EvalTypeName').val(selectedOption.text());
+        }
+
+        // Initialize values on page load
+        $(document).ready(function () {
+            updateEmployeeName();
+            updateEvalTypeName();
         });
     </script>
 

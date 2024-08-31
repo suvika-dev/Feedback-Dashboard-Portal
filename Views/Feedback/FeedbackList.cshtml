@@ -44,7 +44,17 @@
                 <td>@feedback.InterviewerFeedback</td>
                 <td>@feedback.CandidateStrengths</td>
                 <td>@feedback.Milestones</td>
-                <td>@feedback.CompletionPercentage.HasValue ? feedback.CompletionPercentage.Value.ToString() : "N/A"</td>
+               @*  <td>@feedback.CompletionPercentage.HasValue ? feedback.CompletionPercentage.Value.ToString() : "N/A"</td> *@
+                <td>
+                    @if (feedback.CompletionPercentage == null || feedback.CompletionPercentage == 0)
+                    {
+                        @:-
+                    }
+                    else
+                    {
+                        @feedback.CompletionPercentage
+                    }
+                </td>
                 <td>
                     @if (User.IsInRole("Admin") || User.IsInRole("HR Manager"))
                     {

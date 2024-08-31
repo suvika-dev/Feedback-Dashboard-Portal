@@ -16,7 +16,8 @@
         (ViewContext.RouteData.Values["controller"].ToString() != "Account" ||
         ViewContext.RouteData.Values["action"].ToString() != "Login"))
         {
-        @Html.Partial("_NavBar")
+            @Html.Partial("_NavBar")
+           @*  <a href="@Url.Action("Logout", "Account")">Logout</a> *@
         }
     </header>
     <div class="container">

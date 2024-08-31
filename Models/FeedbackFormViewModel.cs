@@ -8,18 +8,19 @@ namespace FDP.Models
     {
         [Required]
         public int FeedbackID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please select an employee.")]
         public int UserID { get; set; }
+        public string EmployeeName { get; set; }
 
-        public IEnumerable<SelectListItem> Users { get; set; }
+        public  IEnumerable<SelectListItem> Users { get; set; }
 
         //[Required]
         //public string EmployeeName { get; set; }
-
-        [Required]
+        [Required(ErrorMessage = "Please select an evaluation type.")]
         public int EvalTypeID { get; set; }
+        public string EvalTypeName { get; set; }
 
-        public IEnumerable<SelectListItem> EvalTypes { get; set; }
+        public  IEnumerable<SelectListItem> EvalTypes { get; set; }
 
         [Required]
         [Range(1, 100, ErrorMessage = "Score must be between 1 and 100.")]

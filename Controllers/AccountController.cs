@@ -27,9 +27,10 @@ public class AccountController : Controller
         HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
         // Redirect to the login page or any other page
-        return RedirectToAction("Login");
+        return RedirectToAction("Index","Home");
     }
     [HttpPost]
+
     public async Task<IActionResult> Login(LoginViewModel model)
     {
         if (ModelState.IsValid)
@@ -41,21 +42,31 @@ public class AccountController : Controller
 
             if (user != null && VerifyPassword(user.PasswordHash, model.Password))
             {
-                var role = user.UserRoles.Select(ur => ur.Role.RoleName).FirstOrDefault();
+                var userRole = user.UserRoles.FirstOrDefault();
+                var roleName = userRole?.Role?.RoleName;
+                var roleId = userRole?.Role?.RoleID;
 
-                if (role == "HR Staff" || role == "HR Manager" || role == "Admin")
+                if (roleName == "HR Staff" || roleName == "HR Manager" || roleName == "Admin")
                 {
-                    // Sign the user in
+                    // Creating claims for the authenticated user
                     var claims = new List<Claim>
-                    {
-                        new Claim(ClaimTypes.Name, user.Username),
-                        new Claim(ClaimTypes.Role, role)
-                    };
+                {
+                    new Claim(ClaimTypes.Name, user.Username),
+                    new Claim(ClaimTypes.Role, roleName),
+                    new Claim(ClaimTypes.NameIdentifier, user.UserID.ToString()), // Standard claim for UserID
+                    new Claim("RoleID", roleId.ToString()) // Custom claim for RoleID
+                };
 
-                    var claimsIdentity = new ClaimsIdentity(claims, "Login");
+                    // Creating the identity and signing in the user
+                    var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                    var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
 
-                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
+                    // Sign in the user with the claims principal
+                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal);
+                    //var claimsIdentity = new ClaimsIdentity(claims, "Login");
 
+                    //await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
+                    // Redirect to the FeedbackList action after successful login
                     return RedirectToAction("FeedbackList", "Feedback");
                 }
                 else
@@ -78,12 +89,15 @@ public class AccountController : Controller
         // return BCrypt.Net.BCrypt.Verify(enteredPassword, storedHash);
         return storedHash == enteredPassword;
     }
+    //public IActionResult Logout()
+    //{
+    //    // Sign out the user
+    //    HttpContext.SignOutAsync();
+
+    //    // Redirect to Home/Index after logout
+    //    return RedirectToAction("Index", "Home");
+    //}
+
 }
 
-//    [HttpPost]
-//    public async Task<IActionResult> Logout()
-//    {
-//        await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-//        return RedirectToAction("Login", "Account");
-//    }
-//}
+

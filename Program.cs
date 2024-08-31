@@ -4,11 +4,11 @@ using FDP.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
+
 
 // Configure Entity Framework Core
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -16,17 +16,26 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 
 // Configure Cookie Authentication
+
+//builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+//{
+//    options.SignIn.RequireConfirmedAccount = true;
+//})
+//.AddEntityFrameworkStores<ApplicationDbContext>()
+//.AddDefaultTokenProviders();
+
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(options =>
+    .AddCookie( options =>
     {
         options.LoginPath = "/Account/Login";
+        //options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+        //options.SlidingExpiration = true;
         options.LogoutPath = "/Account/Logout";
-        options.AccessDeniedPath = "/Account/AccessDenied";
-   });
+       options.AccessDeniedPath = "/Account/AccessDenied";
+    });
 
-
-
-
+// Add services to the container.
+builder.Services.AddControllersWithViews();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

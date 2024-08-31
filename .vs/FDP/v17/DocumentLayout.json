@@ -3,32 +3,44 @@
   "WorkspaceRootPath": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|c:\\users\\user\\source\\repos\\fdp\\fdp\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|c:\\users\\user\\source\\repos\\fdp\\fdp\\controllers\\feedbackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|solutionrelative:controllers\\feedbackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|c:\\users\\user\\source\\repos\\fdp\\fdp\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|solutionrelative:views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|c:\\users\\user\\source\\repos\\fdp\\fdp\\views\\feedback\\feedbacklist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|solutionrelative:views\\feedback\\feedbacklist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|c:\\users\\user\\source\\repos\\fdp\\fdp\\models\\feedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|solutionrelative:models\\feedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|c:\\users\\user\\source\\repos\\fdp\\fdp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|c:\\users\\user\\source\\repos\\fdp\\fdp\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|c:\\users\\user\\source\\repos\\fdp\\fdp\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|solutionrelative:models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|c:\\users\\user\\source\\repos\\fdp\\fdp\\views\\shared\\_navbar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|solutionrelative:views\\shared\\_navbar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|c:\\users\\user\\source\\repos\\fdp\\fdp\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|c:\\users\\user\\source\\repos\\fdp\\fdp\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|solutionrelative:services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|c:\\users\\user\\source\\repos\\fdp\\fdp\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|solutionrelative:views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|c:\\users\\user\\source\\repos\\fdp\\fdp\\services\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|solutionrelative:services\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|c:\\users\\user\\source\\repos\\fdp\\fdp\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|solutionrelative:controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|c:\\users\\user\\source\\repos\\fdp\\fdp\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|c:\\users\\user\\source\\repos\\fdp\\fdp\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8811AC44-976D-4E48-9380-0A845A80E3C6}|FDP.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,97 +50,136 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Views\\Account\\Login.cshtml",
-              "RelativeDocumentMoniker": "Views\\Account\\Login.cshtml",
-              "ToolTip": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Views\\Account\\Login.cshtml",
-              "RelativeToolTip": "Views\\Account\\Login.cshtml",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABUAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-29T08:21:54.054Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Views\\Shared\\_Layout.cshtml*",
-              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml*",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAABFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-29T07:55:28.032Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "_NavBar.cshtml",
               "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Views\\Shared\\_NavBar.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_NavBar.cshtml",
               "ToolTip": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Views\\Shared\\_NavBar.cshtml",
               "RelativeToolTip": "Views\\Shared\\_NavBar.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAACoAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-29T07:53:49.232Z",
+              "WhenOpened": "2024-08-31T05:53:19.97Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Services\\UserService.cs",
+              "RelativeToolTip": "Services\\UserService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T09:25:46.866Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IUserService.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Services\\IUserService.cs",
+              "RelativeDocumentMoniker": "Services\\IUserService.cs",
+              "ToolTip": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Services\\IUserService.cs",
+              "RelativeToolTip": "Services\\IUserService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T09:25:41.698Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "DashboardController.cs",
-              "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Controllers\\DashboardController.cs",
-              "RelativeDocumentMoniker": "Controllers\\DashboardController.cs",
-              "ToolTip": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Controllers\\DashboardController.cs",
-              "RelativeToolTip": "Controllers\\DashboardController.cs",
+              "Title": "ApplicationUser.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Models\\ApplicationUser.cs",
+              "RelativeDocumentMoniker": "Models\\ApplicationUser.cs",
+              "ToolTip": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Models\\ApplicationUser.cs",
+              "RelativeToolTip": "Models\\ApplicationUser.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-29T07:47:06.917Z",
+              "WhenOpened": "2024-08-30T07:34:15.105Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "Views\\Home\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAABLAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-29T07:46:05.724Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "Controllers\\HomeController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAaAAAA",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-29T07:45:50.978Z",
+              "WhenOpened": "2024-08-30T06:53:28.258Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Views\\Dashboard\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Dashboard\\Index.cshtml",
-              "ToolTip": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Views\\Dashboard\\Index.cshtml",
-              "RelativeToolTip": "Views\\Dashboard\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAASAAAA",
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Controllers\\AccountController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEUAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T06:45:52.48Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FeedbackController.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Controllers\\FeedbackController.cs",
+              "RelativeDocumentMoniker": "Controllers\\FeedbackController.cs",
+              "ToolTip": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Controllers\\FeedbackController.cs*",
+              "RelativeToolTip": "Controllers\\FeedbackController.cs*",
+              "ViewState": "AQIAAHsAAAAAAAAAAADwv40AAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-29T07:50:33.273Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FeedbackList.cshtml",
+              "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Views\\Feedback\\FeedbackList.cshtml",
+              "RelativeDocumentMoniker": "Views\\Feedback\\FeedbackList.cshtml",
+              "ToolTip": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Views\\Feedback\\FeedbackList.cshtml",
+              "RelativeToolTip": "Views\\Feedback\\FeedbackList.cshtml",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAAADIAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-29T07:37:45.604Z",
+              "WhenOpened": "2024-08-31T06:57:27.537Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Feedback.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Models\\Feedback.cs",
+              "RelativeDocumentMoniker": "Models\\Feedback.cs",
+              "ToolTip": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Models\\Feedback.cs",
+              "RelativeToolTip": "Models\\Feedback.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAwwBYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-31T06:23:02.673Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\USER\\source\\repos\\FDP\\FDP\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-29T10:53:30.24Z",
               "EditorCaption": ""
             }
           ]

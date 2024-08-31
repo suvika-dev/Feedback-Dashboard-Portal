@@ -27,9 +27,9 @@ namespace FDP.Models
         public int EnteredByUserID { get; set; }
 
         // Additional fields specific to evaluation types
-        public string TestType { get; set; } // Specific to Tests
+       // public string TestType { get; set; } // Specific to Tests
 
-        public string CompetencyAreas { get; set; } // Specific to Assessments
+       // public string CompetencyAreas { get; set; } // Specific to Assessments
 
         public string InterviewerFeedback { get; set; } // Specific to Interviews
 
@@ -44,7 +44,7 @@ namespace FDP.Models
         public virtual User User { get; set; }
         public virtual EvaluationType EvaluationType { get; set; }
         public virtual User EnteredByUser { get; set; }
-        public string EvaluatorComments { get; internal set; }
-        public string EmployeeName { get; internal set; }
+       // public string EvaluatorComments { get; internal set; }
+       // public string EmployeeName { get; internal set; }
     }
 }
