@@ -1,33 +1,97 @@
 ﻿@model FDP.Models.ReportGenerationViewModel
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
-@{
-    ViewBag.Title = "Generate Report";
-}
+<form method="post" asp-action="GenerateReport" enctype="multipart/form-data" class="container mt-4">
+    <!-- Form Fields -->
+    <div class="form-group">
+        <label for="UserID">Select User:</label>
+        <select asp-for="UserID" asp-items="Model.Users" class="form-control">
+            <option value="">All Users</option>
+        </select>
+    </div>
 
-<h2>Generate Report</h2>
+    <div class="form-group">
+        <label for="EvalTypeID">Select Evaluation Type:</label>
+        <select asp-for="EvalTypeID" asp-items="Model.EvalTypes" class="form-control">
+            <option value="">All Evaluation Types</option>
+        </select>
+    </div>
 
-@using (Html.BeginForm("Generate", "Reports", FormMethod.Post))
+    <div class="form-group">
+        <label for="StartDate">Start Date:</label>
+        <input asp-for="StartDate" type="date" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="EndDate">End Date:</label>
+        <input asp-for="EndDate" type="date" class="form-control" />
+    </div>
+
+    <!-- Export Options -->
+    <h4>Select Sections to Include in the PDF:</h4>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="includeScores" name="IncludeScores" value="true" />
+        <label class="form-check-label" for="includeScores">Include Scores</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="includeComments" name="IncludeComments" value="true" />
+        <label class="form-check-label" for="includeComments">Include Comments</label>
+    </div>
+    <!-- Add more checkboxes as needed for other sections -->
+    <!-- Report Customization -->
+    <h4>Customize Report Appearance:</h4>
+    <div class="form-group">
+        <label for="companyLogo">Upload Company Logo:</label>
+        <input type="file" id="companyLogo" name="CompanyLogo" class="form-control-file" />
+    </div>
+
+    <div class="form-group">
+        <label for="pageOrientation">Select Page Orientation:</label>
+        <select id="pageOrientation" name="PageOrientation" class="form-control">
+            <option value="Portrait">Portrait</option>
+            <option value="Landscape">Landscape</option>
+        </select>
+    </div>
+
+   @*  <div class="form-group">
+        <label for="margins">Adjust Margins:</label>
+        <input type="number" id="margins" name="Margins" class="form-control" placeholder="Enter margin size (mm)" />
+    </div> *@
+
+    <!-- Export Button -->
+    <button type="submit" class="btn btn-primary">Generate and Export PDF</button>
+</form>
+
+<!-- Comment out the feedback table since it won't be needed in the view -->
+@*
+@if (Model.FilteredFeedbacks != null && Model.FilteredFeedbacks.Any())
 {
-<div class="form-group">
-    @Html.LabelFor(m => m.ReportType)
-    @Html.RadioButtonFor(m => m.ReportType, "Summary") Summary
-    @Html.RadioButtonFor(m => m.ReportType, "Detailed") Detailed
-</div>
-
-<div class="form-group">
-    @Html.LabelFor(m => m.DepartmentID, "Department")
-    @Html.DropDownListFor(m => m.DepartmentID, new SelectList(ViewBag.Departments, "DepartmentId", "DepartmentName"), "Select Department", new { @class = "form-control" })
-</div>
-
-<div class="form-group">
-    @Html.LabelFor(m => m.StartDate, "Start Date")
-    @Html.TextBoxFor(m => m.StartDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
-</div>
-
-<div class="form-group">
-    @Html.LabelFor(m => m.EndDate, "End Date")
-    @Html.TextBoxFor(m => m.EndDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
-</div>
-
-<button type="submit" class="btn btn-primary">Generate Report</button>
+    <div class="container mt-4">
+        <h3>Filtered Feedbacks:</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Employee</th>
+                    <th>Evaluation Type</th>
+                    <th>Score</th>
+                    <th>Comments</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var feedback in Model.FilteredFeedbacks)
+                {
+                    <tr>
+                        <td>@(feedback.User != null ? feedback.User.Username : "N/A")</td>
+                        <td>@(feedback.EvaluationType != null ? feedback.EvaluationType.EvalName : "N/A")</td>
+                        <td>@feedback.Score</td>
+                        <td>@feedback.Comments</td>
+                        <td>@feedback.Date.ToShortDateString()</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 }
+*@
+

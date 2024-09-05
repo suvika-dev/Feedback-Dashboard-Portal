@@ -17,7 +17,7 @@ namespace FDP.Data
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<EvaluationType> EvaluationType { get; set; }
         public DbSet<Feedback> Feedback { get; set; }
-        public DbSet<Report> Reports { get; set; }
+       // public DbSet<Report> Reports { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

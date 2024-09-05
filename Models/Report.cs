@@ -8,6 +8,7 @@
 
 
         public int GeneratedByUserID { get; set; }
-        public string ReportData { get; set; }
+      //  public string ReportData { get; set; }
+      public IEnumerable<Feedback> Feedbacks { get; set; }
     }
 }

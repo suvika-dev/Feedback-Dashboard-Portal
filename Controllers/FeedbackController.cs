@@ -14,13 +14,13 @@ namespace FDP.Controllers
 
     {
 
-       // private readonly UserManager<ApplicationUser> _userManager;
+    
         private readonly ApplicationDbContext _context;
-        //UserManager<ApplicationUser> userManager,
+        
 
         public FeedbackController( ApplicationDbContext context)
         {
-           // _userManager = userManager;
+           
             _context = context;
         }
 
