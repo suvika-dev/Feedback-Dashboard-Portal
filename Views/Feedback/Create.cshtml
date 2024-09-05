@@ -1,14 +1,14 @@
 ﻿@model FDP.Models.FeedbackFormViewModel
 @{
     // Determine if the dropdown should be disabled
-    var isDisabled = Model.FeedbackID > 0 ? "disabled" : "";
+    var isDisabled = Model.FeedbackID > 0 ? "true" : "false";
 }
 
 <form asp-action="@(Model.FeedbackID == 0 ? "Create" : "Update")" method="post">
     <input type="hidden" asp-for="FeedbackID" />
-<div class="form-group">
+    <div class="form-group">
         <label asp-for="UserID" class="control-label">Employee Name</label>
-        <select asp-for="UserID" class="form-control" asp-items="Model.Users" id="UserID" disabled=@isDisabled>
+        <select asp-for="UserID" class="form-control" asp-items="Model.Users" id="UserID" >
             <option value="">-- Select Employee --</option>
         </select>
         <input type="hidden" id="EmployeeName" name="EmployeeName" value="@Model.EmployeeName" />
@@ -18,7 +18,7 @@
 
     <div class="form-group">
         <label asp-for="EvalTypeID" class="control-label">Evaluation Type</label>
-        <select asp-for="EvalTypeID" class="form-control" asp-items="Model.EvalTypes" id="EvalTypeID" disabled=@isDisabled>
+        <select asp-for="EvalTypeID" class="form-control" asp-items="Model.EvalTypes" id="EvalTypeID" >
             <option value="">-- Select Evaluation Type --</option>
         </select>
         <input type="hidden" id="EvalTypeName" name="EvalTypeName" value="@Model.EvalTypeName" />
@@ -58,10 +58,10 @@
                 <input asp-for="CompetencyAreas" class="form-control" />
                 <span asp-validation-for="CompetencyAreas" class="text-danger"></span>
             </div>
-           @*  <div class="form-group">
-                <label asp-for="EvaluatorComments">Evaluator Comments</label>
-                <textarea asp-for="EvaluatorComments" class="form-control"></textarea>
-                <span asp-validation-for="EvaluatorComments" class="text-danger"></span>
+            @*  <div class="form-group">
+            <label asp-for="EvaluatorComments">Evaluator Comments</label>
+            <textarea asp-for="EvaluatorComments" class="form-control"></textarea>
+            <span asp-validation-for="EvaluatorComments" class="text-danger"></span>
             </div> *@
         </div>
 
@@ -127,6 +127,29 @@
             // Initialize the form with the correct fields visible when editing
             $('#EvalTypeID').trigger('change');
         });
+
+        $(document).ready(function () {
+            var dropdown = $("#UserID");
+        @if (Model.FeedbackID > 0)
+        {
+            <text>dropdown.prop('disabled', true); </text>
+        }
+        else
+        {
+            <text>dropdown.prop('disabled', false); </text>
+        }
+        });
+        $(document).ready(function () {
+            var dropdown = $("#EvalTypeID");
+        @if (Model.FeedbackID > 0)
+        {
+            <text>dropdown.prop('disabled', true); </text>
+        }
+        else
+        {
+            <text>dropdown.prop('disabled', false); </text>
+        }
+                });
 
         function updateEmployeeName() {
             var selectedOption = $('#UserID option:selected');

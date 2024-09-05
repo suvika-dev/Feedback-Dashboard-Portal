@@ -163,15 +163,15 @@ namespace FDP.Controllers
                 .Select(f => new FeedbackListViewModel
                 {
                     FeedbackID = f.FeedbackID,
-                    Username = f.User.Username,
+                    Username = f.User.Username??"Unknown" , // Provide a default value if User is null
                     UserID = f.UserID,
-                    RoleID = f.User.UserRoles.Select(ur => ur.RoleID).FirstOrDefault(),
-                    EvalType = f.EvaluationType.EvalName.ToString(),
+                    RoleID = f.User.UserRoles.Select(ur => ur.RoleID).FirstOrDefault() , // Handle null UserRoles
+                    EvalType = f.EvaluationType.EvalName ?? "No Evaluation Type", // Handle null EvaluationType
                     Score = f.Score,
                     Date = f.Date,
-                    InterviewerFeedback = f.InterviewerFeedback,
-                    CandidateStrengths = f.CandidateStrengths,
-                    Milestones = f.Milestones,
+                    InterviewerFeedback = f.InterviewerFeedback ?? "No Feedback", // Provide a default value if null
+                    CandidateStrengths = f.CandidateStrengths ?? "No Strengths", // Provide a default value if null
+                    Milestones = f.Milestones ?? "No Milestones", // Provide a default value if null
                     CompletionPercentage = f.CompletionPercentage
                 })
                 .ToListAsync();
@@ -191,6 +191,11 @@ namespace FDP.Controllers
             {
                 var feedback = await _context.Feedback.FindAsync(id);
 
+                //var feedback = await _context.Feedback
+                //    .Include(f => f.User.UserID) // Make sure to include related data if necessary
+                //    .Include(f => f.EvaluationType.EvalTypeID) // Same here
+                //    .FirstOrDefaultAsync(f => f.FeedbackID == id);
+
                 if (feedback == null)
                 {
                     return NotFound();
@@ -202,17 +207,16 @@ namespace FDP.Controllers
                     UserID = feedback.UserID,
                     EvalTypeID = feedback.EvalTypeID,
                     Score = feedback.Score,
-                    Comments = feedback.Comments,
-                    TestType = feedback.TestType,
-                    CompetencyAreas = feedback.CompetencyAreas,
-                    // EvaluatorComments = feedback.EvaluatorComments,
-                    InterviewerFeedback = feedback.InterviewerFeedback,
-                    CandidateStrengths = feedback.CandidateStrengths,
-                    Milestones = feedback.Milestones,
-                    CompletionPercentage = feedback.CompletionPercentage,
-                    // Populate the select lists for drop-downs
-                    Users = GetUsersSelectList(),
-                    EvalTypes = GetEvalTypesSelectList()
+                    Comments = feedback.Comments ?? string.Empty, // Handle null values
+                    TestType = feedback.TestType ?? string.Empty, // Handle null values
+                    CompetencyAreas = feedback.CompetencyAreas ?? string.Empty, // Handle null values
+                   // EvaluatorComments = feedback.EvaluatorComments ?? string.Empty, // Handle null values
+                    InterviewerFeedback = feedback.InterviewerFeedback ?? string.Empty, // Handle null values
+                    CandidateStrengths = feedback.CandidateStrengths ?? string.Empty, // Handle null values
+                    Milestones = feedback.Milestones ?? string.Empty, // Handle null values
+                   // CompletionPercentage = feedback.CompletionPercentage ?? 0, // Handle null values if it's nullable
+                    Users = await GetUsersSelectListAsync(), // Ensure this returns a Task<IEnumerable<SelectListItem>>
+                    EvalTypes = await GetEvalTypesSelectListAsync() // Ensure this returns a Task<IEnumerable<SelectListItem>>
                 };
 
                 return View("Create", model); // Load the same form view
@@ -292,30 +296,29 @@ namespace FDP.Controllers
             }
 
             // If model state is not valid, reload the form with the model data
-            model.Users = GetUsersSelectList();
-            model.EvalTypes = GetEvalTypesSelectList();
+            model.Users =  await GetUsersSelectListAsync   ();
+            model.EvalTypes = await  GetEvalTypesSelectListAsync();
             return View("Create",model);
         }
 
-        public IEnumerable<SelectListItem> GetUsersSelectList()
+        private async Task<IEnumerable<SelectListItem>> GetUsersSelectListAsync()
         {
-            return _context.Users
-                .Select(u => new SelectListItem
-                {
-                    Value = u.UserID.ToString(), // Assuming UserID is the ID property
-                    Text = u.Username // Assuming Username is the display text
-                })
-                .ToList();
+            var users = await _context.Users.ToListAsync();
+            return users.Select(u => new SelectListItem
+            {
+                Value = u.UserID.ToString(),
+                Text = u.Username
+            });
         }
-        public IEnumerable<SelectListItem> GetEvalTypesSelectList()
+
+        private async Task<IEnumerable<SelectListItem>> GetEvalTypesSelectListAsync()
         {
-            return _context.EvaluationType  
-                .Select(e => new SelectListItem
-                {
-                    Value = e.EvalTypeID.ToString(), // Assuming EvalTypeID is the ID property
-                    Text = e.EvalName // Assuming EvalName is the display text
-                })
-                .ToList();
+            var evalTypes = await _context.EvaluationType.ToListAsync();
+            return evalTypes.Select(e => new SelectListItem
+            {
+                Value = e.EvalTypeID.ToString(),
+                Text = e.EvalName
+            });
         }
 
 

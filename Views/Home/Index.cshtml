@@ -1,14 +1,82 @@
 ﻿@model FDP.Models.HomeViewModel
 
-<h1>Welcome to the Feedback Dashboard Portal</h1>
-<p>Streamline your feedback management and reporting.</p>
- <a href="/Account/Login" class="btn btn-primary">Login to Get Started</a> 
-@* @if (User.Identity.IsAuthenticated)
-{
-    <a href="@Url.Action("Index", "Dashboard")" class="btn btn-primary">Go to Dashboard</a>
-}
-else
-{
-    <a href="/Account/Login" class="btn btn-primary">Login to Get Started</a>
-}
- *@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Dashboard Portal</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #007bff 0%, #004085 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+            .hero h1 {
+                font-size: 48px;
+                font-weight: 700;
+                margin-bottom: 20px;
+            }
+
+            .hero p {
+                font-size: 18px;
+                margin-bottom: 30px;
+            }
+
+            .hero .btn-primary {
+                padding: 15px 30px;
+                font-size: 18px;
+                border-radius: 30px;
+                transition: background-color 0.3s ease;
+            }
+
+                .hero .btn-primary:hover {
+                    background-color: #0056b3;
+                }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #6c757d;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Welcome to the Feedback Dashboard Portal</h1>
+            <p>Streamline your feedback management and reporting.</p>
+            <a href="/Account/Login" class="btn btn-primary">Login to Get Started</a>
+          
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2024 - FDP
+    </footer>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+   @*  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script> *@
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
