@@ -9,6 +9,7 @@
         public string EvalType { get; set; }
         public int Score { get; set; }
         public DateTime Date { get; set; }
+        public string Comments { get; set; }
         public string InterviewerFeedback { get; set; }
         public string CandidateStrengths { get; set; }
         public string Milestones { get; set; }

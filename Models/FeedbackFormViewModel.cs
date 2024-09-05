@@ -36,8 +36,8 @@ namespace FDP.Models
         [RequiredIfEvaluationType("EvalTypeID", "2")]
         public string CompetencyAreas { get; set; }
 
-        [RequiredIfEvaluationType("EvalTypeID", "2")]
-        public string EvaluatorComments { get; set; }
+       // [RequiredIfEvaluationType("EvalTypeID", "2")]
+       // public string EvaluatorComments { get; set; }
 
         // Specific to Interviews
         [RequiredIfEvaluationType("EvalTypeID", "3")]

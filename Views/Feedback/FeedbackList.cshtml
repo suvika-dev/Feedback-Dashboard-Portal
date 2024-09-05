@@ -13,10 +13,10 @@
             <th>Username</th>
             <th>Evaluation Type</th>
             <th>Score</th>
-            <th>Date</th>
+            @* <th>Date</th>
             <th>Interviewer Feedback</th>
             <th>Candidate Strengths</th>
-            <th>Milestones</th>
+            <th>Milestones</th> *@
             <th>Completion Percentage</th>
             <th>Actions</th>
         </tr>
@@ -40,15 +40,15 @@
                 </td>
                 <td>@feedback.EvalType</td>
                 <td>@feedback.Score</td>
-                <td>@feedback.Date.ToString("yyyy-MM-dd")</td>
+                @* <td>@feedback.Date.ToString("yyyy-MM-dd")</td>
                 <td>@feedback.InterviewerFeedback</td>
                 <td>@feedback.CandidateStrengths</td>
-                <td>@feedback.Milestones</td>
+                <td>@feedback.Milestones</td> *@
                @*  <td>@feedback.CompletionPercentage.HasValue ? feedback.CompletionPercentage.Value.ToString() : "N/A"</td> *@
                 <td>
                     @if (feedback.CompletionPercentage == null || feedback.CompletionPercentage == 0)
                     {
-                        @:-
+                        @:N/A
                     }
                     else
                     {

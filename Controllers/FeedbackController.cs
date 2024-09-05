@@ -55,8 +55,7 @@ namespace FDP.Controllers
                 case 1: // Test
                     ModelState.Remove("Users");
                     ModelState.Remove("EvalTypes");
-                    ModelState.Remove("CompetencyAreas");
-                    ModelState.Remove("EvaluatorComments");
+                    ModelState.Remove("CompetencyAreas");                   
                     ModelState.Remove("InterviewerFeedback");
                     ModelState.Remove("CandidateStrengths");
                     ModelState.Remove("Milestones");
@@ -73,16 +72,14 @@ namespace FDP.Controllers
                     ModelState.Remove("Users");
                     ModelState.Remove("EvalTypes");
                     ModelState.Remove("TestType");
-                    ModelState.Remove("CompetencyAreas");
-                    ModelState.Remove("EvaluatorComments");
+                    ModelState.Remove("CompetencyAreas");                    
                     ModelState.Remove("Milestones");
                     break;
                 case 4: // Project Progress
                     ModelState.Remove("Users");
                     ModelState.Remove("EvalTypes");
                     ModelState.Remove("TestType");
-                    ModelState.Remove("CompetencyAreas");
-                    ModelState.Remove("EvaluatorComments");
+                    ModelState.Remove("CompetencyAreas");                   
                     ModelState.Remove("InterviewerFeedback");
                     ModelState.Remove("CandidateStrengths");
                     break;
@@ -132,6 +129,9 @@ namespace FDP.Controllers
                     UserID = model?.UserID ?? default(int),
                     EvalTypeID = model?.EvalTypeID ?? default(int),
                     Score = model?.Score ?? default(int),
+                    Comments = model?.Comments?.ToString() ?? "N/A",
+                    TestType = model?.TestType?.ToString() ?? "N/A",
+                    CompetencyAreas = model?.CompetencyAreas?.ToString() ?? "N/A",
                     InterviewerFeedback = model?.InterviewerFeedback?.ToString() ?? "N/A",
                     CandidateStrengths = model?.CandidateStrengths?.ToString() ?? "N/A",
                     Milestones = model?.Milestones?.ToString() ?? "N/A",
@@ -178,85 +178,144 @@ namespace FDP.Controllers
 
             return View(feedbacks);
         }
+
+
+        [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            var feedback = await _context.Feedback
-                .Include(f => f.User)
-                .Include(f => f.EvaluationType)
-                .FirstOrDefaultAsync(f => f.FeedbackID == id);
-
-            if (feedback == null)
+            if (id <= 0)
             {
-                return NotFound();
+                return BadRequest("Invalid ID");
             }
-
-            var model = new FeedbackFormViewModel
+            try
             {
-                UserID = feedback.UserID,
-                EvalTypeID = feedback.EvalTypeID,
-                Score = feedback.Score,
-                Comments = feedback.Comments,
-                InterviewerFeedback = feedback.InterviewerFeedback,
-                CandidateStrengths = feedback.CandidateStrengths,
-                Milestones = feedback.Milestones,
-                CompletionPercentage = feedback.CompletionPercentage,
-                Date = feedback.Date,
-                Users = _context.Users.Select(u => new SelectListItem
-                {
-                    Value = u.UserID.ToString(),
-                    Text = u.Username
-                }).ToList(),
-                EvalTypes = _context.EvaluationType.Select(et => new SelectListItem
-                {
-                    Value = et.EvalTypeID.ToString(),
-                    Text = et.ToString()  // Ensure you have a proper ToString() override or use a different property
-                }).ToList()
-            };
-
-            return View(model);
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(FeedbackFormViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var feedback = await _context.Feedback.FindAsync(model.FeedbackID);
+                var feedback = await _context.Feedback.FindAsync(id);
 
                 if (feedback == null)
                 {
                     return NotFound();
                 }
 
+                var model = new FeedbackFormViewModel
+                {
+                    FeedbackID = feedback.FeedbackID,
+                    UserID = feedback.UserID,
+                    EvalTypeID = feedback.EvalTypeID,
+                    Score = feedback.Score,
+                    Comments = feedback.Comments,
+                    TestType = feedback.TestType,
+                    CompetencyAreas = feedback.CompetencyAreas,
+                    // EvaluatorComments = feedback.EvaluatorComments,
+                    InterviewerFeedback = feedback.InterviewerFeedback,
+                    CandidateStrengths = feedback.CandidateStrengths,
+                    Milestones = feedback.Milestones,
+                    CompletionPercentage = feedback.CompletionPercentage,
+                    // Populate the select lists for drop-downs
+                    Users = GetUsersSelectList(),
+                    EvalTypes = GetEvalTypesSelectList()
+                };
+
+                return View("Create", model); // Load the same form view
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(FeedbackFormViewModel model)
+        {
+            switch (model.EvalTypeID)
+            {
+                case 1: // Test
+                    ModelState.Remove("Users");
+                    ModelState.Remove("EvalTypes");
+                    ModelState.Remove("CompetencyAreas");
+                    ModelState.Remove("InterviewerFeedback");
+                    ModelState.Remove("CandidateStrengths");
+                    ModelState.Remove("Milestones");
+                    break;
+                case 2: // Assessment
+                    ModelState.Remove("Users");
+                    ModelState.Remove("EvalTypes");
+                    ModelState.Remove("TestType");
+                    ModelState.Remove("InterviewerFeedback");
+                    ModelState.Remove("CandidateStrengths");
+                    ModelState.Remove("Milestones");
+                    break;
+                case 3: // Interview
+                    ModelState.Remove("Users");
+                    ModelState.Remove("EvalTypes");
+                    ModelState.Remove("TestType");
+                    ModelState.Remove("CompetencyAreas");
+                    ModelState.Remove("Milestones");
+                    break;
+                case 4: // Project Progress
+                    ModelState.Remove("Users");
+                    ModelState.Remove("EvalTypes");
+                    ModelState.Remove("TestType");
+                    ModelState.Remove("CompetencyAreas");
+                    ModelState.Remove("InterviewerFeedback");
+                    ModelState.Remove("CandidateStrengths");
+                    break;
+                default:
+                    break;
+            }
+            if (ModelState.IsValid)
+            {
+                var feedback = await _context.Feedback.FindAsync(model.FeedbackID);
+                if (feedback == null)
+                {
+                    return NotFound();
+                }
+
+                // Update only the fields that have changed
                 feedback.UserID = model.UserID;
                 feedback.EvalTypeID = model.EvalTypeID;
                 feedback.Score = model.Score;
                 feedback.Comments = model.Comments;
+                feedback.TestType = model.TestType;
+                feedback.CompetencyAreas = model.CompetencyAreas;
+               // feedback.EvaluatorComments = model;
                 feedback.InterviewerFeedback = model.InterviewerFeedback;
                 feedback.CandidateStrengths = model.CandidateStrengths;
                 feedback.Milestones = model.Milestones;
-                feedback.CompletionPercentage = (int)model.CompletionPercentage;
-                feedback.Date = model.Date;
+                feedback.CompletionPercentage = model.CompletionPercentage.HasValue ? (int)model.CompletionPercentage.Value : 0;
 
-                _context.Update(feedback);
+                // Save changes to the database
+                _context.Feedback.Update(feedback);
                 await _context.SaveChangesAsync();
 
                 return RedirectToAction("FeedbackList");
             }
 
-            // Re-populate the dropdown lists in case of a validation error
-            model.Users = _context.Users.Select(u => new SelectListItem
-            {
-                Value = u.UserID.ToString(),
-                Text = u.Username
-            }).ToList();
-            model.EvalTypes = _context.EvaluationType.Select(et => new SelectListItem
-            {
-                Value = et.EvalTypeID.ToString(),
-                Text = et.ToString()  // Ensure you have a proper ToString() override or use a different property
-            }).ToList();
+            // If model state is not valid, reload the form with the model data
+            model.Users = GetUsersSelectList();
+            model.EvalTypes = GetEvalTypesSelectList();
+            return View("Create",model);
+        }
 
-            return View(model);
+        public IEnumerable<SelectListItem> GetUsersSelectList()
+        {
+            return _context.Users
+                .Select(u => new SelectListItem
+                {
+                    Value = u.UserID.ToString(), // Assuming UserID is the ID property
+                    Text = u.Username // Assuming Username is the display text
+                })
+                .ToList();
+        }
+        public IEnumerable<SelectListItem> GetEvalTypesSelectList()
+        {
+            return _context.EvaluationType  
+                .Select(e => new SelectListItem
+                {
+                    Value = e.EvalTypeID.ToString(), // Assuming EvalTypeID is the ID property
+                    Text = e.EvalName // Assuming EvalName is the display text
+                })
+                .ToList();
         }
 
 
