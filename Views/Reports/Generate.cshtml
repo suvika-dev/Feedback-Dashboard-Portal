@@ -1,4 +1,6 @@
 ﻿@model FDP.Models.ReportGenerationViewModel
+
+
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
 <form method="post" asp-action="GenerateReport" enctype="multipart/form-data" class="container mt-4">
@@ -29,10 +31,10 @@
 
     <!-- Export Options -->
     <h4>Select Sections to Include in the PDF:</h4>
-    <div class="form-check">
+   @*  <div class="form-check">
         <input class="form-check-input" type="checkbox" id="includeScores" name="IncludeScores" value="true" />
         <label class="form-check-label" for="includeScores">Include Scores</label>
-    </div>
+    </div> *@
     <div class="form-check">
         <input class="form-check-input" type="checkbox" id="includeComments" name="IncludeComments" value="true" />
         <label class="form-check-label" for="includeComments">Include Comments</label>
@@ -60,6 +62,15 @@
 
     <!-- Export Button -->
     <button type="submit" class="btn btn-primary">Generate and Export PDF</button>
+    @if (ViewData.ModelState.Values.Any(v => v.Errors.Count > 0))
+    {
+        <div class="alert alert-danger" role="alert">
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <p>@error.ErrorMessage</p>
+            }
+        </div>
+    }
 </form>
 
 <!-- Comment out the feedback table since it won't be needed in the view -->

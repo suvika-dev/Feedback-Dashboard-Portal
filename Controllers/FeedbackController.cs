@@ -24,7 +24,8 @@ namespace FDP.Controllers
             _context = context;
         }
 
-        public IActionResult Create()
+       
+            public IActionResult Create()
         {
            
             var model = new FeedbackFormViewModel
@@ -120,7 +121,7 @@ namespace FDP.Controllers
             var userIdClaim =  User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
             {
-                return BadRequest("User ID claim is missing or invalid.");
+                return BadRequest("User ID is missing or invalid.");
             }
             try
             {

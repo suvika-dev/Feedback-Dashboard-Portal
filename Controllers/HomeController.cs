@@ -17,6 +17,10 @@ namespace FDP.Controllers
         {
             return View();
         }
+        public IActionResult LandingPage()
+        {
+            return View();
+        }
 
         public IActionResult Privacy()
         {

@@ -17,6 +17,15 @@
 </div>
 <div class="form-group">
     <button type="submit" class="btn btn-primary">Login</button>
-    <a href="@Url.Action("ForgotPassword", "Account")" class="btn btn-link">Forgot Password?</a>
+   @*  <a href="@Url.Action("ForgotPassword", "Account")" class="btn btn-link">Forgot Password?</a> *@
 </div>
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger">
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <p>@error.ErrorMessage</p>
+            }
+        </div>
+    }
 }

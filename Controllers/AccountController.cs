@@ -46,8 +46,7 @@ public class AccountController : Controller
                 var roleName = userRole?.Role?.RoleName;
                 var roleId = userRole?.Role?.RoleID;
 
-                if (roleName == "HR Staff" || roleName == "HR Manager" || roleName == "Admin")
-                {
+                
                     // Creating claims for the authenticated user
                     var claims = new List<Claim>
                 {
@@ -63,22 +62,17 @@ public class AccountController : Controller
 
                     // Sign in the user with the claims principal
                      await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal);
-                    //var claimsIdentity = new ClaimsIdentity(claims, "Login");
-
-                    //await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
-                    // Redirect to the FeedbackList action after successful login
-                    return RedirectToAction("FeedbackList", "Feedback");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Access denied.");
-                }
+                    
+                    return RedirectToAction("LandingPage", "Home");
+                    
             }
             else
             {
+              
                 ModelState.AddModelError("", "Invalid login attempt.");
             }
         }
+        
 
         return View(model);
     }
@@ -89,14 +83,7 @@ public class AccountController : Controller
         // return BCrypt.Net.BCrypt.Verify(enteredPassword, storedHash);
         return storedHash == enteredPassword;
     }
-    //public IActionResult Logout()
-    //{
-    //    // Sign out the user
-    //    HttpContext.SignOutAsync();
-
-    //    // Redirect to Home/Index after logout
-    //    return RedirectToAction("Index", "Home");
-    //}
+    
 
 }
 

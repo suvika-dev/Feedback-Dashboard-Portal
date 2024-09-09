@@ -1,4 +1,9 @@
-﻿<nav class="navbar navbar-expand-lg navbar-light bg-light">
+﻿@using System.Security.Claims
+@{
+    var userRole = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
+}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">FDP</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -6,23 +11,29 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="@Url.Action("Index", "Home")">Home</a>
+                <a class="nav-link" href="@Url.Action("LandingPage", "Home")">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Create", "Feedback")">Feedback</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Generate", "Reports")">Reports</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Login", "Account")">Login</a>
-            </li>
+            @* Conditionally show Feedback link *@
+            @if (userRole == "HR Manager" || userRole == "HR Staff" || userRole == "Admin")
+            {
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("FeedbackList", "Feedback")">Feedback</a>
+                </li>
+            }
+
+            @* Conditionally show Reports link *@
+            @if (userRole == "HR Manager" || userRole == "Admin")
+            {
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Generate", "Reports")">Reports</a>
+                </li>
+            }
         </ul>
         <ul class="navbar-nav ml-auto">
             <!-- User Dropdown Right Below Toggler -->
             <li class="nav-item dropdown d-lg-none">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMobile" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    @User.Identity.Name
+                    @User.Identity.Name @(userRole != null ? $"({userRole})" : "")
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMobile">
                     <a class="dropdown-item" href="@Url.Action("Logout", "Account")">Logout</a>
